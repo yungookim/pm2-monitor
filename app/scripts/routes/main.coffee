@@ -3,11 +3,13 @@
 class pm2Monitor.Routers.MainRouter extends Backbone.Router
 
   routes :
-    "" : "landing"
+    "" : "home"
 
   initialize : -> 
     # Global variable storages
     window.pm2Monitor.Globals = {}
 
-  landing : ->
-    
+  home : ->
+    new pm2Monitor.Views.MainView 
+      el : $ '#content'
+      model : new pm2Monitor.Models.Pm2AppModel()

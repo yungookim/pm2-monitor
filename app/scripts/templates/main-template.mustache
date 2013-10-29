@@ -1,2 +1,72 @@
-<p>Your content here.</p>
+<h1>System</h1>
 
+<p>Host Name : <strong>{{system_info.hostname}}</strong></p>
+<p>System Uptime : {{system_info.uptime}}</p>
+
+<p>
+  Load Averages : 
+  {{#monit.loadavg}}
+    <span class="label label-primary" style="margin:10px;">{{.}}</span>
+  {{/monit.loadavg}}
+</p>
+
+<p> Total Memory : {{monit.total_mem}} </p>
+<p> Free Memory : {{monit.free_mem}} </p>
+
+<p> 
+  CPU 
+    {{#monit.cpu}}
+    <div class="well col-lg-6">
+      Model : {{model}} <br>
+      Speed : {{speed}} <br>
+      <h5>Times </h5>
+        User : {{times.user}} <br>
+        Nice : {{times.nice}} <br>
+        System : {{times.sys}} <br>
+        Idel : {{times.idle}} <br>
+        IRQ : {{times.irq}} <br>
+    </div>
+    {{/monit.cpu}}
+</p>
+
+<p> 
+  Interfaces
+  {{#monit.interfaces.lo}}
+  <div class="well col-lg-3">
+    Address : {{address}} <br>
+    Family : {{family}} <br>
+    Internal : {{internal}}
+  </div>
+  {{/monit.interfaces.lo}}
+
+  {{#monit.interfaces.wlan0}}
+  <div class="well col-lg-3">
+    Address : {{address}} <br>
+    Family : {{family}} <br>
+    Internal : {{internal}}
+  </div>
+  {{/monit.interfaces.wlan0}}
+</p>
+
+<h1>Processes</h1>
+
+{{#processes}}
+<div class="well col-lg-6">
+  Status : <span class="label label-success" style="margin:10px;">{{status}}</span>
+  <br>
+  PID : {{pid}} <br>
+  PM ID : {{pm_id}} <br>
+  Memory : {{monit.memory}} <br>
+  CPU : {{monit.cpu}} <br>
+  Script : {{opts.script}} <br>
+  Name : {{opts.name}} <br>
+  Exec Path : {{opts.pm_exec_path}} <br>
+  Logname : {{opts.kimy}} <br>
+  File out : {{opts.fileOutput}} <br>
+  PM Error Log : {{opts.fileOutput}} <br>
+  File Error : {{opts.fileError}} <br>
+  PID File : {{opts.pidFile}} <br>
+  Restart Time : {{opts.restart_time}} <br>
+  Unstable Restarts : {{opts.unstable_restarts}} <br>
+</div>
+{{/processes}}

@@ -5,6 +5,8 @@ window.pm2Monitor =
   Routers: {}
   init: ->
     'use strict'
+    new @Routers.MainRouter()
+    Backbone.history.start()
     console.log 'Hello from Backbone!'
 
 $ ->
