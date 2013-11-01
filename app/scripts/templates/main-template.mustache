@@ -1,4 +1,6 @@
-<h1>System</h1>
+<div class="divider"></div>
+
+<h1>System <small>Current</small></h1>
 
 <p>Host Name : <strong>{{system_info.hostname}}</strong></p>
 <p>System Uptime : {{system_info.uptime}}</p>
@@ -6,12 +8,20 @@
 <p>
   Load Averages : 
   {{#monit.loadavg}}
-    <span class="label label-primary" style="margin:10px;">{{.}}</span>
+    <span class="label load_avg" style="margin:10px;">{{.}}</span>
   {{/monit.loadavg}}
 </p>
 
-<p> Total Memory : {{monit.total_mem}} </p>
-<p> Free Memory : {{monit.free_mem}} </p>
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Load Average</h3>
+    <div id="load_avg"></div>
+  </div>
+  <div class="col-lg-6">
+    <h3>Memory</h3>
+    <div id="memory_graph"></div>
+  </div>
+</div>
 
 <p> 
   CPU 

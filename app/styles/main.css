@@ -1,8 +1,50 @@
 body {
     background: #fafafa;
 }
+  /* Side Nav */
+  .side-nav {
+  margin-left: -225px;
+  left: 225px;
+  width: 225px;
+  position: fixed;
+  top: 50px;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background-color: #222222;
+  overflow-y: auto;
+  }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-}
+  /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
+
+  .side-nav>li.dropdown>ul.dropdown-menu {
+  position: relative;
+  min-width: 225px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a {
+  color: #999999;
+  padding: 15px 15px 15px 25px;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:hover,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a.active,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:focus {
+  color: #fff;
+  background-color: #080808;
+  }
+
+  .side-nav>li>a {
+  width: 225px;
+  }
+
+  .divider {
+    height:80px;
+  }
