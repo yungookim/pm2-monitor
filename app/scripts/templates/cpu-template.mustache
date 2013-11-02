@@ -1,0 +1,23 @@
+{{#monit.cpu}}
+  <div class="col-lg-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-12">
+            {{model}} - {{speed}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-12">
+            <p>User : {{times.user}} </p>
+            <p>Nice : {{times.nice}} </p>
+            <p>System : {{times.sys}} </p>
+            <p>Idel : {{times.idle}} </p>
+            <p>Interrupt Request(IRQ) : {{times.irq}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/monit.cpu}}

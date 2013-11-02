@@ -5,8 +5,8 @@
 <p>Host Name : <strong>{{system_info.hostname}}</strong></p>
 <p>System Uptime : {{system_info.uptime}}</p>
 
-<p>
-  Load Averages : 
+<p data-toggle="tooltip" title="1-minute, 5-minute and 15-minute average" class="pointer">
+  Load Averages 
   {{#monit.loadavg}}
     <span class="label load_avg" style="margin:10px;">{{.}}</span>
   {{/monit.loadavg}}
@@ -23,60 +23,34 @@
   </div>
 </div>
 
-<p> 
-  CPU 
-    {{#monit.cpu}}
-    <div class="well col-lg-6">
-      Model : {{model}} <br>
-      Speed : {{speed}} <br>
-      <h5>Times </h5>
-        User : {{times.user}} <br>
-        Nice : {{times.nice}} <br>
-        System : {{times.sys}} <br>
-        Idel : {{times.idle}} <br>
-        IRQ : {{times.irq}} <br>
-    </div>
-    {{/monit.cpu}}
-</p>
-
-<p> 
-  Interfaces
-  {{#monit.interfaces.lo}}
-  <div class="well col-lg-3">
-    Address : {{address}} <br>
-    Family : {{family}} <br>
-    Internal : {{internal}}
-  </div>
-  {{/monit.interfaces.lo}}
-
-  {{#monit.interfaces.wlan0}}
-  <div class="well col-lg-3">
-    Address : {{address}} <br>
-    Family : {{family}} <br>
-    Internal : {{internal}}
-  </div>
-  {{/monit.interfaces.wlan0}}
-</p>
+<div id="cpu_graphs" class="row">
+  <h3>CPU 
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#cpu_details" style="margin-left:10px;">
+    Details
+    </button>
+  </h3>
+  <div id="cpu_details" class="collapse"></div>
+</div>
 
 <h1>Processes</h1>
+<div clas=s"row">
+  <div class="col-lg-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>PID</th>
+          <th>Name</th>
+          <th>pm_id</th>
+          <th>Name</th>
+          <th>User</th>
+          <th>Exec Mode</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="process_table">
 
-{{#processes}}
-<div class="well col-lg-6">
-  Status : <span class="label label-success" style="margin:10px;">{{status}}</span>
-  <br>
-  PID : {{pid}} <br>
-  PM ID : {{pm_id}} <br>
-  Memory : {{monit.memory}} <br>
-  CPU : {{monit.cpu}} <br>
-  Script : {{opts.script}} <br>
-  Name : {{opts.name}} <br>
-  Exec Path : {{opts.pm_exec_path}} <br>
-  Logname : {{opts.kimy}} <br>
-  File out : {{opts.fileOutput}} <br>
-  PM Error Log : {{opts.fileOutput}} <br>
-  File Error : {{opts.fileError}} <br>
-  PID File : {{opts.pidFile}} <br>
-  Restart Time : {{opts.restart_time}} <br>
-  Unstable Restarts : {{opts.unstable_restarts}} <br>
+      </tbody>
+    </table>
+  </div>
 </div>
-{{/processes}}

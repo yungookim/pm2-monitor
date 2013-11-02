@@ -9,8 +9,7 @@ class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
       hostname: ""
       uptime: 0
     monit:
-      # //  load average for the past 1, 5, and 15 minutes
-      loadavg: [0, 0, 0]
+      loadavg: [0, 0, 0] # //  load average for the past 1, 5, and 15 minutes
       total_mem: 0
       free_mem: 0
       cpu: [
@@ -23,44 +22,23 @@ class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
           idle: 0
           irq: 0
       ]
-      interfaces:
-        lo: [
-          address: "127.0.0.1"
-          family: "IPv4"
-          internal: true
-        ,
-          address: "::1"
-          family: "IPv6"
-          internal: true
-        ]
-        wlan0: [
-          address: ""
-          family: "IPv4"
-          internal: false
-        ,
-          address: ""
-          family: "IPv6"
-          internal: false
-        ]
     processes: [
       pid: 0
-      opts:
-        script: ""
-        name: ""
-        pm_exec_path: ""
-        DBUS_SESSION_BUS_ADDRESS: ""
-        pm_out_log_path: ""
-        fileOutput: ""
-        pm_err_log_path: ""
-        fileError: ""
-        pm_pid_path: ""
-        pidFile: ""
-        pm_id: 0
-        pm_uptime: 0
-        restart_time: 0
-        unstable_restarts: 0
       pm_id: 0
-      status: "online"
+      pm2_env : # Version < 6 has a different structure. i.e. opts
+        name : ""
+        env :
+          USER : ""
+        exec_mode : ""
+        pm_exec_path : ""
+        pm_out_log_path : ""
+        pm_err_log_path : ""
+        pm_id : 0
+        restart_time : 0
+        unstable_restarts : 0
+        created_at : 0
+        pm_uptime : 0
+        status : ""
       monit:
         memory: 0
         cpu: 0
@@ -74,4 +52,3 @@ class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
 
       error : (model, response, options) ->
         console.log 'Error while loading PM2 stats'
-

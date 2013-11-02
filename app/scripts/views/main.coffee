@@ -11,8 +11,14 @@ class pm2Monitor.Views.MainView extends Backbone.View
     @render_graphs()
 
   render_graphs : ->
+    @load_avg_indicators()
+    @memory_graph()
+    @load_avg_graphs()
+    @cpu_graphs()
+    @process_tables()
 
-    # Load Average Indicators
+  load_avg_indicators : ->
+    # Load Average Indicators, TODO STUPID way. fix this later
     _.each $('.load_avg'), (each)->
       avg = parseFloat($(each).html())
       if avg < 0.7
@@ -22,6 +28,7 @@ class pm2Monitor.Views.MainView extends Backbone.View
       else if avg > 0.85
         $(each).addClass 'label-danger'
 
+  memory_graph : ->
     # Memory usage
     free_mem = @model.get('monit').free_mem
     free_mem_percent = (free_mem/@model.get('monit').total_mem).toFixed(2) * 100
@@ -40,6 +47,7 @@ class pm2Monitor.Views.MainView extends Backbone.View
       formatter : (y, data)->
         y + "%"
 
+  load_avg_graphs : ->
     # Load Average
     Morris.Bar
       element: "load_avg"
@@ -55,3 +63,49 @@ class pm2Monitor.Views.MainView extends Backbone.View
       # stacked : true
       # axes : false
       grid : false
+
+  cpu_graphs : ->
+    _template = window.JST['cpu-template']
+    $('#cpu_details').html Mustache.render _template, @model.toJSON()
+    # CPU
+    processors = @model.get('monit').cpu
+    _.each processors, (p) =>
+      # Calculate the percentages
+      total = p.times.user + p.times.nice + p.times.sys + p.times.idle
+      user = (p.times.user/total).toFixed(2) * 100
+      nice = (p.times.nice/total).toFixed(2) * 100
+      system = (p.times.sys/total).toFixed(2) * 100
+      idle = (p.times.idle/total).toFixed(2) * 100
+      # Save the total CPU for later use
+      p.times.total = total
+
+      # Create a random id for DOM element to contain the graph
+      _id = (Math.random() / +new Date()).toString(36).replace(/[^a-z]+/g, '')
+      wrapper = $('<div/>').addClass 'col-lg-6'
+      _dom = $('<div/>').attr('id', _id)
+      wrapper.html _dom
+      $('#cpu_graphs').append wrapper
+
+      Morris.Donut
+        element: _id
+        data: [
+          label: "user"
+          value: user
+        ,
+          label: "nice"
+          value: nice
+        ,
+          label: "system"
+          value: system
+        ,
+          label: "idle"
+          value: idle 
+        ]
+        formatter : (y, data)->
+          y + "%"
+
+  process_tables : ()->
+    $table = $ '#process_table'
+    _template = window.JST['process-template']
+    $table.html Mustache.render _template, @model.toJSON()
+    

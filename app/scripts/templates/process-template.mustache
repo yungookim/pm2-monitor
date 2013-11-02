@@ -1,0 +1,34 @@
+{{#processes}}
+<tr>
+
+  <td class="status-col">
+    <span class="label label-{{pm2_env.status}}">
+    {{pm2_env.status}}
+    </span>
+  </td>
+  <td>{{pid}}</td>
+  <td>{{pm2_env.name}}</td>
+  <td>{{pm_id}}</td>
+  <td>{{pm2_env.name}}</td>
+  <td>{{pm2_env.env.USER}}</td>
+  <td>{{pm2_env.exec_mode}}</td>
+
+  <td>
+    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#detail_{{pid}}">
+      Show Details
+    </button>
+    <div id="detail_{{pid}}" class="collapse">
+      <p><b>Path</b> {{pm2_env.pm_exec_path}}</p>
+      <p><b>Outlog</b> {{pm2_env.pm_out_log_path}}</p>
+      <p><b>Errlog</b> {{pm2_env.pm_err_log_path}}</p>
+      <p><b>Restarts</b> {{pm2_env.restart_time}}</p>
+      <p class="text-danger"><b>Unstable Restarts</b> {{pm2_env.unstable_restarts}}</p>
+      <p><b>Created At</b> {{pm2_env.created_at}}</p>
+      <p><b>Uptime</b> {{pm2_env.pm_uptime}}</p>
+      <p><b>Memory</b> {{monit.memory}}</p>
+      <p><b>CPU</b> {{monit.cpu}}</p>
+    </div>
+  </td>
+
+</tr>
+{{/processes}}
