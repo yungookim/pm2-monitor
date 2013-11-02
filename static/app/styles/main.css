@@ -58,6 +58,14 @@ width: 225px;
   width: 10px;
 }
 
-.label-online {
+#process_table .label-online {
   background-color: rgb(92, 184, 92);
+}
+
+#process_table .label-stopped {
+  background-color: rgb(240, 173, 78);
+}
+
+#process_table .label-errored {
+  background-color: rgb(217, 83, 79);
 }

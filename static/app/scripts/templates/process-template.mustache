@@ -7,6 +7,7 @@
     </span>
   </td>
   <td>{{pid}}</td>
+  <td>{{pm2_env.pm_exec_path}}</td>
   <td>{{pm2_env.name}}</td>
   <td>{{pm_id}}</td>
   <td>{{pm2_env.name}}</td>
@@ -18,7 +19,6 @@
       Show Details
     </button>
     <div id="detail_{{pid}}" class="collapse">
-      <p><b>Path</b> {{pm2_env.pm_exec_path}}</p>
       <p><b>Outlog</b> {{pm2_env.pm_out_log_path}}</p>
       <p><b>Errlog</b> {{pm2_env.pm_err_log_path}}</p>
       <p><b>Restarts</b> {{pm2_env.restart_time}}</p>

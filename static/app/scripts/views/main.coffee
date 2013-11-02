@@ -80,7 +80,7 @@ class pm2Monitor.Views.MainView extends Backbone.View
       p.times.total = total
 
       # Create a random id for DOM element to contain the graph
-      _id = (Math.random() / +new Date()).toString(36).replace(/[^a-z]+/g, '')
+      _id = (Math.random() / + new Date()).toString(36).replace(/[^a-z]+/g, '')
       wrapper = $('<div/>').addClass 'col-lg-6'
       _dom = $('<div/>').attr('id', _id)
       wrapper.html _dom
@@ -108,4 +108,3 @@ class pm2Monitor.Views.MainView extends Backbone.View
     $table = $ '#process_table'
     _template = window.JST['process-template']
     $table.html Mustache.render _template, @model.toJSON()
-    
