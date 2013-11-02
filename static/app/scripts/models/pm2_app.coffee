@@ -2,7 +2,7 @@
 
 class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
 
-  urlRoot : '/test.json'
+  urlRoot : '/api/server'
 
   defaults : 
     system_info:

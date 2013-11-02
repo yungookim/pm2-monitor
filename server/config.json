@@ -1,0 +1,6 @@
+{
+  "hosts" : [
+    "http://localhost:9615"
+  ],
+  "port" : 8210
+}
