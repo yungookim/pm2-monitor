@@ -10,6 +10,6 @@ Current stage
 TODO  
   
 * override Model.parser for graphical output  
-* Real-time pulling  
+* [*] Real-time pulling (TODO : Keep the scrolls intact after re-rendering)
 * Persistant saving  
 * [pm2-interface](https://github.com/Unitech/pm2-interface) integration for web client control  
