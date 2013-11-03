@@ -1,7 +1,7 @@
 pm2-monitor
 ===========
   
-Please note that this is still under heavy development and it's not ready for production environment.
+Please note that this project is under heavy development and it's not ready for production environment.
   
 Web monitoring layer for [pm2](https://github.com/Unitech/pm2) web api
 
