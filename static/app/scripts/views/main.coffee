@@ -76,10 +76,10 @@ class pm2Monitor.Views.MainView extends Backbone.View
     _.each processors, (p) =>
       # Calculate the percentages
       total = p.times.user + p.times.nice + p.times.sys + p.times.idle
-      user = (p.times.user/total).toFixed(2) * 100
-      nice = (p.times.nice/total).toFixed(2) * 100
-      system = (p.times.sys/total).toFixed(2) * 100
-      idle = (p.times.idle/total).toFixed(2) * 100
+      user = (p.times.user/total * 100).toFixed(2)
+      nice = (p.times.nice/total* 100).toFixed(2)
+      system = (p.times.sys/total* 100).toFixed(2)
+      idle = (p.times.idle/total * 100).toFixed(2)
       # Save the total CPU for later use
       p.times.total = total
 
