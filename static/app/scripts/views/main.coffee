@@ -8,7 +8,7 @@ class pm2Monitor.Views.MainView extends Backbone.View
     window.setInterval( ()=>
       console.log 'fetching...'
       @model.fetch()
-    , 5000)
+    , 900000)
 
   render : ->
     @$el.html Mustache.render @template, @model.toJSON()
