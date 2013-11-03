@@ -18,4 +18,4 @@ TODO
 
 Other Projects Used/Referenced
 
-*[sb-admin](https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/sb-admin)  
+* [sb-admin](https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/sb-admin)  
