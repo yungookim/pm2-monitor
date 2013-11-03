@@ -14,3 +14,8 @@ TODO
 * Persistant saving  
 * [pm2-interface](https://github.com/Unitech/pm2-interface) integration for web client control  
 * Change the pie graphs to something that can support re-rendering.
+
+
+Other Projects Used/Referenced
+
+* [sb-admin](https://github.com/IronSummitMedia/startbootstrap/tree/master/templates/sb-admin)  
