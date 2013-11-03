@@ -11,7 +11,6 @@ Requirements
 * pm2 > 6.0 (v5.x has different json structure for its web API and is not supported by this project)    
 * Coffeescript  
 
-
 Running
 =======
 _Make sure pm2 and its monit api is running_
@@ -31,7 +30,6 @@ Open pm2-monitor/server/config.json, add the URL of the remote to hosts : []
 Screenshot
 ==========
 <img src="https://dl.dropboxusercontent.com/u/36220055/Screenshot%20from%202013-11-01%2015%3A32%3A36.png">
-
 
 TODO  
   
