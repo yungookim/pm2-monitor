@@ -1,7 +1,6 @@
 {
   "hosts" : [
-    "http://localhost:9615",
-    "http://192.241.134.36:9615"
+    "http://localhost:9615"
   ],
   "port" : 8210
 }
