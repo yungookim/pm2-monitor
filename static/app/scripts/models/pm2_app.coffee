@@ -2,7 +2,7 @@
 
 class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
 
-  urlRoot : '/api/server'
+  urlRoot : '/api/local'
 
   defaults : 
     system_info:
@@ -44,11 +44,17 @@ class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
         cpu: 0
     ]
 
-  initialize : ->
+  initialize : (param)->
+    if param and param.url
+      param.url = param.url.replace /&#47;/g, '/'
+      @urlRoot = '/api/remote'
+      @set 'id', param.url
+
     @fetch
       success : (model, response, options)=>
         @get('system_info').uptime_hour = model.get('system_info').uptime%3600
         console.log 'PM2 stats loaded'
 
       error : (model, response, options) ->
+        alert response
         console.log 'Error while loading PM2 stats'

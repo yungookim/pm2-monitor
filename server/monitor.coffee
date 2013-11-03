@@ -24,10 +24,19 @@ else
   app.use express.static process.env.PWD  + '/../static/.tmp'
 
 # TODO add support for multiple servers
-app.get '/api/server', (req, res)->
+app.get '/api/local', (req, res)->
   request nconf.get("hosts")[0], (error, response, body) ->
     res.json JSON.parse(body) if not error and response.statusCode is 200
-    res.send 'error'
+    res.send error
+
+app.get '/api/server_list', (req, res)->
+  res.send nconf.get "hosts"
+
+app.get '/api/remote/:url', (req, res)->
+  remote_addr = req.params.url.replace /&#47;/g, '/'
+  request remote_addr, (error, response, body) ->
+    res.json JSON.parse(body) if not error and response.statusCode is 200
+    res.send error
 
 app.listen(nconf.get("port"));
 console.log "Running on ", nconf.get("port")
