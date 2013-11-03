@@ -23,6 +23,7 @@ TODO
 * [pm2-interface](https://github.com/Unitech/pm2-interface) integration for web client control  
 * Change the pie graphs to something that can support re-rendering.
 * Authentication
+* Documentation
 
 Other Projects Used/Referenced
 
