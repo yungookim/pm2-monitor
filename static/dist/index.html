@@ -11,8 +11,8 @@
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.oesmith.co.uk/morris-0.4.3.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
   
   <link rel="stylesheet" href="styles/a25db3b8.main.css">
   <script src="scripts/vendor/f7f27360.modernizr.js"></script>
@@ -34,10 +34,11 @@
 
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-          <li>
-            <a href="/">
-              <span class="glyphicon glyphicon-dashboard"></span> Dashboard
-            </a>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-dashboard"></span> Dashboard <b class="caret"></b></a>
+              <ul id="remote_list" class="dropdown-menu">
+              </ul>
           </li>
           <li>
             <a href="/">
@@ -49,6 +50,7 @@
               <i class="fa fa-cogs"></i> Interface
             </a>
           </li>
+
         </ul>
       </div><!-- /.navbar-collapse -->
     </nav>
@@ -70,8 +72,9 @@
 
   <script src="scripts/67bcbf77.vendor.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+  <script src="//cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.min.js"></script>
 
-  <script src="scripts/b508dc0b.main.js"></script>
+  <script src="scripts/95c2c2bb.main.js"></script>
 </body>
 </html>
