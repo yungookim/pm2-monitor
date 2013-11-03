@@ -8,7 +8,7 @@ Web monitoring layer for [pm2](https://github.com/Unitech/pm2) web api
 Requirements
 ============
 
-* pm2 > 6.0 (v5.x has different json structure for its web API and is not supported by this project)    
+* pm2 > 6.0 (v5.x has different data structure for its web API and is not supported by this project)    
 * Coffeescript  
 
 Running
