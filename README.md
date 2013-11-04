@@ -13,7 +13,7 @@ Requirements
 
 Running
 =======
-_Make sure pm2 and its monit api is running (pm2 web)_
+_Make sure pm2 and its monit api is running (```pm2 web```)_
 ```
 git clone git@github.com:yungookim/pm2-monitor.git
 cd pm2-monitor/server 
