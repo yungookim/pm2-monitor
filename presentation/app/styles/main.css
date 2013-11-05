@@ -55,18 +55,18 @@ width: 225px;
   cursor: pointer;
 }
 
-#process_table .status-col {
+.status-col {
   width: 10px;
 }
 
-#process_table .label-online {
+.label-online {
   background-color: rgb(92, 184, 92);
 }
 
-#process_table .label-stopped {
+.label-stopped {
   background-color: rgb(240, 173, 78);
 }
 
-#process_table .label-errored {
+.label-errored {
   background-color: rgb(217, 83, 79);
 }

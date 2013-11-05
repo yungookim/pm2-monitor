@@ -1,0 +1,59 @@
+<div class="divider"></div>
+
+<div class="alert alert-danger hide">Error from the remote host. 
+  <p>Message : <span id="err_msg"></span></p>
+</div>
+
+<h1>System <small>{{system_info.hostname}}</small></h1>
+
+<p>System Uptime : {{system_info.uptime}}</p>
+
+<p data-toggle="tooltip" title="1-minute, 5-minute and 15-minute average" class="pointer">
+  Load Averages 
+  {{#monit.loadavg}}
+    <span class="label load_avg" style="margin:10px;">{{.}}</span>
+  {{/monit.loadavg}}
+</p>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Load Average</h3>
+    <div id="load_avg"></div>
+  </div>
+  <div class="col-lg-6">
+    <h3>Memory</h3>
+    <div id="memory_graph"></div>
+  </div>
+</div>
+
+<div id="cpu_graphs" class="row">
+  <h3>CPU 
+    <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#cpu_details" style="margin-left:10px;">
+    Details
+    </button>
+  </h3>
+  <div id="cpu_details" class="collapse"></div>
+</div>
+
+<h1>Processes</h1>
+<div clas=s"row">
+  <div class="col-lg-12">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>PID</th>
+          <th>pm_id</th>
+          <th>Path</th>
+          <th>Name</th>
+          <th>User</th>
+          <th>Mode</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="process_table">
+
+      </tbody>
+    </table>
+  </div>
+</div>
