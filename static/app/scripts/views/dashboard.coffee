@@ -3,15 +3,34 @@
 class pm2Monitor.Views.DashboardView extends Backbone.View
 
   initialize : ->
+  
     @template = window.JST['main-template']
-    @listenTo @model, 'change', @render
-    window.setInterval( ()=>
-      console.log 'fetching...'
-      @model.fetch()
-    , 10000)
+    @listenTo @model, 'change', @render_soft
+    @render()
+
+    # window.setInterval( ()=>
+    #   console.log 'fetching...'
+    #   @model.fetch
+    #     success : (model, response, options)=>
+    #       console.log response
+    #       console.log 'PM2 stats loaded'
+
+    #     error : (model, response, options) ->
+    #       alert response
+    #       console.log 'Error while loading PM2 stats'
+    # , 10000)
 
   render : ->
     @$el.html Mustache.render @template, @model.toJSON()
+
+    # Notify that the data is not available
+    if @model.get 'errno'
+      $('#err_msg').parent().parent().removeClass 'hide'
+      $('#err_msg').html @model.get 'errno'
+    else 
+      @render_graphs()
+
+  render_soft : ->
     @render_graphs()
 
   render_graphs : ->

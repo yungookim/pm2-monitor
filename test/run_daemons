@@ -1,4 +1,4 @@
 #!/bin/bash
-pm2 start online.js -i 3
-pm2 start error.js -i 3 
+pm2 start online_test.js -i 3
+pm2 start error_test.js -i 3 
 pm2 web

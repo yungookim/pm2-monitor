@@ -10,7 +10,6 @@
   <td>{{pm_id}}</td>
   <td>{{pm2_env.pm_exec_path}}</td>
   <td>{{pm2_env.name}}</td>
-  <td>{{pm2_env.name}}</td>
   <td>{{pm2_env.env.USER}}</td>
   <td>{{pm2_env.exec_mode}}</td>
 
@@ -32,29 +31,4 @@
 
 </tr>
 
-<!--
-<tr>
-  <td></td>
-  <th>Outlog</th>
-  <th>Errlog</th>
-  <th>Restarts</th>
-  <th>Unstable Restarts</th>
-  <th>Created At</th>
-  <th>Uptime</th>
-  <th>Memory</th>
-  <th>CPU</th>
-</tr>
-
-<tr>
-  <td></td>
-  <td>{{pm2_env.pm_out_log_path}}</td>
-  <td>{{pm2_env.pm_err_log_path}}</td>
-  <td>{{pm2_env.restart_time}}</td>
-  <td class="text-danger">{{pm2_env.unstable_restarts}}</td>
-  <td>{{pm2_env.created_at}}</td>
-  <td>{{pm2_env.pm_uptime}}</td>
-  <td>{{monit.memory}}</td>
-  <td>{{monit.cpu}}</td>
-</tr>
--->
 {{/processes}}

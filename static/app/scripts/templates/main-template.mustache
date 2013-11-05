@@ -1,5 +1,9 @@
 <div class="divider"></div>
 
+<div class="alert alert-danger hide">Error from the remote host. 
+  <p>Message : <span id="err_msg"></span></p>
+</div>
+
 <h1>System <small>{{system_info.hostname}}</small></h1>
 
 <p>System Uptime : {{system_info.uptime}}</p>
@@ -41,7 +45,6 @@
           <th>PID</th>
           <th>pm_id</th>
           <th>Path</th>
-          <th>Name</th>
           <th>Name</th>
           <th>User</th>
           <th>Mode</th>

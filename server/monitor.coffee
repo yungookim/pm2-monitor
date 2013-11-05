@@ -31,21 +31,24 @@ num_pass = 0;
 _.each nconf.get("hosts"), (host) ->
   console.log ("Checking " + host).rainbow
   request host, (err, res, body) ->
-    throw new Error(('The host ' + host + ' is not reachable. Check the firewall or make sure "pm2 web" is running xD').underline.red) if err
+    # If the hosts are not reachable at initiation, then exit
+    # TODO : Add -f so that even if the check fails, the process will still run
+    console.error(('The host ' + host + ' is not reachable. Check the firewall or make sure "pm2 web" is running xD').underline.red) if err
+    console.error('I\'m killing myself') process.exit(1) if err
     console.log (host + ' OK').green
     num_pass++;
     start() if num_pass is nconf.get('hosts').length
 
-start = () ->
-  app.get '/api/server_list', (req, res)->
+app.get '/api/server_list', (req, res)->
     res.send nconf.get "hosts"
 
-  app.get '/api/remote/:url', (req, res)->
-    remote_addr = req.params.url.replace /&#47;/g, '/'
-    request remote_addr, (error, response, body) ->
-      console.log response
-      res.json JSON.parse(body) if not error and response.statusCode is 200
-      res.send error
+app.get '/api/remote/:url', (req, res)->
+  remote_addr = req.params.url.replace /&#47;/g, '/'
+  request remote_addr, (error, response, body) ->
+    console.log response
+    res.json JSON.parse(body) if not error and response.statusCode is 200
+    res.send error
 
-  app.listen(nconf.get("port"));
-  console.log "Running on ".green, nconf.get("port").green
+start = () ->
+  app.listen nconf.get "port"
+  console.log "Running on".green, nconf.get("port")

@@ -52,9 +52,11 @@ class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
 
     @fetch
       success : (model, response, options)=>
-        @get('system_info').uptime_hour = model.get('system_info').uptime%3600
-        console.log 'PM2 stats loaded'
+        console.log response
+        # @get('system_info').uptime_hour = model.get('system_info').uptime%3600
 
       error : (model, response, options) ->
-        alert response
+        console.log response
+        model.set 'errno', response
+        console.log model
         console.log 'Error while loading PM2 stats'
