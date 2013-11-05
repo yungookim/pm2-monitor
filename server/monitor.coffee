@@ -19,12 +19,12 @@ app.configure ->
 if nconf.env().get('NODE_ENV')
   console.log 'Running Production Mode'
   nconf.env().argv().file process.env.PWD  + '/config.json'
-  app.use express.static process.env.PWD  + '/../static/dist'
+  app.use express.static process.env.PWD  + '/../presentation/dist'
 else 
   console.log 'Running Dev Mode'
   nconf.env().argv().file process.env.PWD  + '/devconfig.json'
-  app.use express.static process.env.PWD  + '/../static/app'
-  app.use express.static process.env.PWD  + '/../static/.tmp'
+  app.use express.static process.env.PWD  + '/../presentation/app'
+  app.use express.static process.env.PWD  + '/../presentation/.tmp'
 
 # Test if all remote hosts are valid
 num_pass = 0;

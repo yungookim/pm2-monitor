@@ -5,8 +5,7 @@ class presentation.Views.DashboardView extends Backbone.View
   initialize : ->
   
     @template = window.JST['main-template']
-    @listenTo @model, 'change', @render_soft
-    @render()
+    @listenTo @model, 'change', @render
 
     # window.setInterval( ()=>
     #   console.log 'fetching...'
@@ -29,9 +28,6 @@ class presentation.Views.DashboardView extends Backbone.View
       $('#err_msg').html @model.get 'errno'
     else 
       @render_graphs()
-
-  render_soft : ->
-    @render_graphs()
 
   render_graphs : ->
     @load_avg_indicators()
