@@ -7,18 +7,6 @@ class presentation.Views.RemoteView extends Backbone.View
     @template = window.JST['remote-template']
     @listenTo @model, 'change', @render
 
-    # window.setInterval( ()=>
-    #   console.log 'fetching...'
-    #   @model.fetch
-    #     success : (model, response, options)=>
-    #       console.log response
-    #       console.log 'PM2 stats loaded'
-
-    #     error : (model, response, options) ->
-    #       alert response
-    #       console.log 'Error while loading PM2 stats'
-    # , 10000)
-
   render : ->
     @$el.html Mustache.render @template, @model.toJSON()
 

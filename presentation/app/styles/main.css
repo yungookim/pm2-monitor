@@ -70,3 +70,11 @@ width: 225px;
 .label-errored {
   background-color: rgb(217, 83, 79);
 }
+
+.table tbody > tr > td {
+  border-top: 0px !important;
+}
+
+.table .table{
+  background-color: transparent;
+}

@@ -10,7 +10,7 @@
 <script type="text/template" id="subtemplate_daemon">
 
   {{#hosts}}
-  <table class="table table-bordered">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th colspan="3">{{system_info.hostname}} @ <a href="#remote/{{url}}">{{id}} </a></th>
@@ -20,10 +20,10 @@
         <th>PID</th>
         <th>pm_id</th>
         <th>Path</th>
-        <th>Name</th>
         <th>User</th>
-        <th>Mode</th>
-        <th>Details</th>
+        <th class="text-danger">Unstable Restarts</th>
+        <th>CPU</th>
+        <th>Memory</th>
       </tr>
     </thead>
     <tbody>
@@ -37,26 +37,12 @@
         <td>{{pid}}</td>
         <td>{{pm_id}}</td>
         <td>{{pm2_env.pm_exec_path}}</td>
-        <td>{{pm2_env.name}}</td>
         <td>{{pm2_env.env.USER}}</td>
-        <td>{{pm2_env.exec_mode}}</td>
-
-        <td>
-          <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#detail_{{pid}}">
-            Show Details
-          </button>
-          <div id="detail_{{pid}}" class="collapse">
-            <p><b>Outlog</b> {{pm2_env.pm_out_log_path}}</p>
-            <p><b>Errlog</b> {{pm2_env.pm_err_log_path}}</p>
-            <p><b>Restarts</b> {{pm2_env.restart_time}}</p>
-            <p class="text-danger"><b>Unstable Restarts</b> {{pm2_env.unstable_restarts}}</p>
-            <p><b>Created At</b> {{pm2_env.created_at}}</p>
-            <p><b>Uptime</b> {{pm2_env.pm_uptime}}</p>
-            <p><b>Memory</b> {{monit.memory}}</p>
-            <p><b>CPU</b> {{monit.cpu}}</p>
-          </div>
-        </td>
+        <td>{{pm2_env.unstable_restarts}}</td>
+        <td>{{monit.cpu_consumption_percent}} % </td>
+        <td>{{monit.memory_consumption_percent}}%</td>
       </tr>
+
       {{/processes}}
 
     </tbody>

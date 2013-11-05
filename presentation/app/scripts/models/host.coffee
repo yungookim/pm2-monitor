@@ -52,11 +52,22 @@ class presentation.Models.HostModel extends Backbone.Model
 
     @fetch
       success : (model, response, options)=>
-        console.log response
-        # @get('system_info').uptime_hour = model.get('system_info').uptime%3600
+        window.setInterval ()=>
+          @fetch()
+        , 5000
+        
 
       error : (model, response, options) ->
         console.log response
         model.set 'errno', response
         console.log model
         console.log 'Error while loading PM2 stats'
+
+  parse : (res, opt)->
+    # TODO verify the units are correct
+    _.each res.processes, (process)->
+      process.monit.memory_consumption = process.monit.memory/res.monit.total_mem
+      process.monit.memory_consumption_percent = (process.monit.memory_consumption * 100).toFixed 2
+      process.monit.cpu_consumption_percent = (process.monit.cpu * 100).toFixed 4
+    
+    return res
