@@ -19,7 +19,9 @@
     "nconf": "0.6.x",
     "bcrypt-nodejs" : "0.0.x",
     "underscore": "1.4.x",
-    "request" : "2.27.x"
+    "request" : "2.27.x",
+    "underscore" : "1.5.x",
+    "colors" : "0.6.x"
   },
   "devDependencies": {},
   "scripts": {

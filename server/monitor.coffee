@@ -1,7 +1,10 @@
-request = require "request"
+request = require 'request'
 nconf   = require 'nconf'
-express        = require('express')
-app            = express()
+express = require 'express'
+_       = require 'underscore'
+colors  = require 'colors'
+app     = express()
+
 
 # In case this runs on Heroku
 process.env.PWD = process.cwd()
@@ -23,20 +26,26 @@ else
   app.use express.static process.env.PWD  + '/../static/app'
   app.use express.static process.env.PWD  + '/../static/.tmp'
 
-# TODO add support for multiple servers
-app.get '/api/local', (req, res)->
-  request nconf.get("hosts")[0], (error, response, body) ->
-    res.json JSON.parse(body) if not error and response.statusCode is 200
-    res.send error
+# Test if all remote hosts are valid
+num_pass = 0;
+_.each nconf.get("hosts"), (host) ->
+  console.log ("Checking " + host).rainbow
+  request host, (err, res, body) ->
+    throw new Error(('The host ' + host + ' is not reachable. Check the firewall or make sure "pm2 web" is running xD').underline.red) if err
+    console.log (host + ' OK').green
+    num_pass++;
+    start() if num_pass is nconf.get('hosts').length
 
-app.get '/api/server_list', (req, res)->
-  res.send nconf.get "hosts"
+start = () ->
+  app.get '/api/server_list', (req, res)->
+    res.send nconf.get "hosts"
 
-app.get '/api/remote/:url', (req, res)->
-  remote_addr = req.params.url.replace /&#47;/g, '/'
-  request remote_addr, (error, response, body) ->
-    res.json JSON.parse(body) if not error and response.statusCode is 200
-    res.send error
+  app.get '/api/remote/:url', (req, res)->
+    remote_addr = req.params.url.replace /&#47;/g, '/'
+    request remote_addr, (error, response, body) ->
+      console.log response
+      res.json JSON.parse(body) if not error and response.statusCode is 200
+      res.send error
 
-app.listen(nconf.get("port"));
-console.log "Running on ", nconf.get("port")
+  app.listen(nconf.get("port"));
+  console.log "Running on ".green, nconf.get("port").green
