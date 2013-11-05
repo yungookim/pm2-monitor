@@ -1,6 +1,6 @@
 'use strict';
 
-class pm2Monitor.Routers.MainRouter extends Backbone.Router
+class presentation.Routers.MainRouter extends Backbone.Router
 
   routes :
     "" : "home"
@@ -8,8 +8,8 @@ class pm2Monitor.Routers.MainRouter extends Backbone.Router
 
   initialize : -> 
     # Global variable storages
-    window.pm2Monitor.Globals = window.pm2Monitor.Globals or {}
-    window.pm2Monitor.Globals.host_models = {}
+    window.presentation.Globals = window.presentation.Globals or {}
+    window.presentation.Globals.host_models = {}
 
     # Get the list of hosts we want to query
     $.get 'api/server_list', (ret) ->
@@ -26,7 +26,7 @@ class pm2Monitor.Routers.MainRouter extends Backbone.Router
       # model : new pm2Monitor.Models.Pm2AppModel()
 
   load_remote : (url) ->
-    new pm2Monitor.Views.DashboardView 
+    new presentation.Views.DashboardView 
       el : $ '#content'
-      model : new pm2Monitor.Models.Pm2AppModel url : url
+      model : new presentation.Models.Pm2AppModel url : url
       

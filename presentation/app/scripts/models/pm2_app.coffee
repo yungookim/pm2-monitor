@@ -1,6 +1,6 @@
 'use strict';
 
-class pm2Monitor.Models.Pm2AppModel extends Backbone.Model
+class presentation.Models.Pm2AppModel extends Backbone.Model
 
   urlRoot : '/api/local'
 

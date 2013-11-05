@@ -1,4 +1,4 @@
-window.pm2Monitor =
+window.presentation =
   Models: {}
   Collections: {}
   Views: {}
@@ -7,8 +7,7 @@ window.pm2Monitor =
     'use strict'
     new @Routers.MainRouter()
     Backbone.history.start()
-    console.log 'Hello from Backbone!'
 
 $ ->
   'use strict'
-  pm2Monitor.init();
+  presentation.init();

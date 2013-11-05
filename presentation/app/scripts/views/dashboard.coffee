@@ -1,6 +1,6 @@
 'use strict';
 
-class pm2Monitor.Views.DashboardView extends Backbone.View
+class presentation.Views.DashboardView extends Backbone.View
 
   initialize : ->
   
